@@ -1,6 +1,7 @@
 package com.hortahidroponica.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference; // Importe esta classe
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 

@@ -19,7 +19,7 @@ public class Horta extends PanacheEntityBase {
     @Column(name = "\"STATUS\"", nullable = false)
     public Integer status = 1;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "\"ID_PARAMETRO\"", nullable = true)
     public Parametro parametro;
 }

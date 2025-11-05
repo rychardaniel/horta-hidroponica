@@ -5,10 +5,12 @@ import com.hortahidroponica.model.Parametro;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
 
 import java.util.List;
 
-@Path("/horta/")
+@Path("/horta")
 public class HortaController {
 
     @GET
@@ -34,7 +36,7 @@ public class HortaController {
     @Path("/nome/{nome}")
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public Parametro searchParameterByGardenName(@PathParam("nome") String nome) {
+    public Response searchParameterByGardenName(@PathParam("nome") String nome) {
         Horta horta = Horta.find("nome", nome).firstResult();
 
         if (horta == null) {
@@ -42,14 +44,19 @@ public class HortaController {
             newHorta.nome = nome;
             newHorta.status = 0;
             newHorta.persist();
-            throw new BadRequestException("Horta com nome " + nome + " não encontrada. Horta criada com sucesso.");
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Horta não encontrada, mas foi criada criada")
+                    .build();
         }
 
         if (horta.parametro == null) {
-            throw new NotFoundException("Horta com nome " + nome + " não possui parâmetro associado");
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("Horta encontrada, mas sem parâmetro associado")
+                    .build();
+
         }
 
-        return horta.parametro;
+        return Response.ok(horta.parametro).build();
     }
 
 }
