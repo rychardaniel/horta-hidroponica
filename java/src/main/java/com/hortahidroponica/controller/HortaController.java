@@ -2,6 +2,7 @@ package com.hortahidroponica.controller;
 
 import com.hortahidroponica.model.Horta;
 import com.hortahidroponica.model.Parametro;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
@@ -32,12 +33,14 @@ public class HortaController {
     @GET
     @Path("/nome/{nome}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Parametro searchParameterByGardenName(@PathParam("nome") String nome) {
         Horta horta = Horta.find("nome", nome).firstResult();
 
         if (horta == null) {
             Horta newHorta = new Horta();
             newHorta.nome = nome;
+            newHorta.status = 0;
             newHorta.persist();
             throw new BadRequestException("Horta com nome " + nome + " não encontrada. Horta criada com sucesso.");
         }
