@@ -17,7 +17,7 @@ public class HortaController {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/id/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Horta getHortaById(@PathParam("id") int id) {
         Horta horta = Horta.findById(id);
@@ -30,7 +30,7 @@ public class HortaController {
     }
 
     @GET
-    @Path("/{nome}")
+    @Path("/nome/{nome}")
     @Produces(MediaType.APPLICATION_JSON)
     public Parametro searchParameterByGardenName(@PathParam("nome") String nome) {
         Horta horta = Horta.find("nome", nome).firstResult();
