@@ -1,4 +1,4 @@
-package com.hydroponics.model;
+package com.hortahidroponica.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;

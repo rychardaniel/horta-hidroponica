@@ -1,4 +1,4 @@
-# quarkus-java-api
+# horta-hidroponica
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 

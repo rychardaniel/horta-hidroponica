@@ -1,4 +1,4 @@
-package com.hydroponics.model;
+package com.hortahidroponica.model;
 
 // Não precisa mais do @JsonIgnore aqui
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;

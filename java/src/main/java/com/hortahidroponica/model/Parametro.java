@@ -1,4 +1,4 @@
-package com.hydroponics.model;
+package com.hortahidroponica.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference; // Importe esta classe
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
